@@ -1,0 +1,28 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      <ion-thumbnail>
+        <img [src]="item.vehicle.photo">
+      </ion-thumbnail>
+      {{ item.vehicle.brand }}{{ item.vehicle.model }}
+    </ion-card-title>
+    <ion-card-subtitle>Patente: {{item.vehicle.patent}}</ion-card-subtitle>
+    <ion-card-subtitle>Lado Carga: {{item.vehicle.loadSide}}</ion-card-subtitle>
+    <ion-card-subtitle>Flota: {{item.vehicle.fleet}}</ion-card-subtitle>
+    <ion-card-subtitle>Capacidad: {{item.vehicle.capacity}}m3</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let route of item.routes; index as i" [detail]="false">
+        <ion-icon slot="start" name="location-outline"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h2><strong>{{route.name}}</strong></h2>
+          <h3>Residuo: {{ route.wasteType }}</h3>
+          <h3>Horario: {{ route.startTime | date:'d/M/Y hh:mm' }}hs</h3>
+        </ion-label>
+        <ion-button [routerLink]="'/route s/'+route.id" slot="end" [disabled]="i > 0">Detalles</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

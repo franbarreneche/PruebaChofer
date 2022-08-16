@@ -1,83 +1,66 @@
 import { Injectable } from '@angular/core';
-
-export interface Message {
-  fromName: string;
-  subject: string;
-  date: string;
-  id: number;
-  read: boolean;
-}
+import { of } from 'rxjs';
+import { RoutesForVehicle } from '../types/types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  public messages: Message[] = [
-    {
-      fromName: 'Matt Chorsey',
-      subject: 'New event: Trip to Vegas',
-      date: '9:32 AM',
-      id: 0,
-      read: false
-    },
-    {
-      fromName: 'Lauren Ruthford',
-      subject: 'Long time no chat',
-      date: '6:12 AM',
-      id: 1,
-      read: false
-    },
-    {
-      fromName: 'Jordan Firth',
-      subject: 'Report Results',
-      date: '4:55 AM',
-      id: 2,
-      read: false
-    },
-    {
-      fromName: 'Bill Thomas',
-      subject: 'The situation',
-      date: 'Yesterday',
-      id: 3,
-      read: false
-    },
-    {
-      fromName: 'Joanne Pollan',
-      subject: 'Updated invitation: Swim lessons',
-      date: 'Yesterday',
-      id: 4,
-      read: false
-    },
-    {
-      fromName: 'Andrea Cornerston',
-      subject: 'Last minute ask',
-      date: 'Yesterday',
-      id: 5,
-      read: false
-    },
-    {
-      fromName: 'Moe Chamont',
-      subject: 'Family Calendar - Version 1',
-      date: 'Last Week',
-      id: 6,
-      read: false
-    },
-    {
-      fromName: 'Kelly Richardson',
-      subject: 'Placeholder Headhots',
-      date: 'Last Week',
-      id: 7,
-      read: false
-    }
-  ];
-
-  constructor() { }
-
-  public getMessages(): Message[] {
-    return this.messages;
-  }
-
-  public getMessageById(id: number): Message {
-    return this.messages[id];
-  }
+  data$ = of(data);
 }
+
+const data: RoutesForVehicle[] = [
+  {
+    vehicle: {
+      id: 1,
+      brand: 'Mercedes Benz',
+      model: 'AH22',
+      patent: 'ABC123',
+      loadSide: 'Derecha',
+      fleet: 12,
+      capacity: 5.31,
+      photo: 'https://aseca.com/wp-content/uploads/2020/06/HalfPack-Freedom.jpg',
+    },
+    routes: [
+      {
+        id: 1,
+        name: 'Vidrio Martes',
+        startTime: '2022-08-16T10:00:00.000Z',
+        wasteType: 'Vidrio',
+      },
+      {
+        id: 2,
+        name: ' Carton Martes',
+        startTime: '2022-08-16T15:00:00.000Z',
+        wasteType: 'Carton',
+      }
+    ]
+  },
+  {
+    vehicle: {
+      id: 1,
+      brand: 'Mercedes Benz',
+      model: 'BC33',
+      patent: 'DFG456',
+      loadSide: 'Izquierda',
+      fleet: 15,
+      capacity: 4.20,
+      // eslint-disable-next-line max-len
+      photo: 'https://suractual.com.ar/download/multimedia.normal.ba24c47dfd2cfaff.63616d696f6e6573207265636f6c6563746f726573202831295f6e6f726d616c2e6a7067.jpg',
+    },
+    routes: [
+      {
+        id: 3,
+        name: 'Vidrio Martes',
+        startTime: '2022-08-16T11:00:00.000Z',
+        wasteType: 'Carton',
+      },
+      {
+        id: 4,
+        name: ' Carton Martes',
+        startTime: '2022-08-16T16:00:00.000Z',
+        wasteType: 'Vidrfio',
+      }
+    ]
+  }
+];
