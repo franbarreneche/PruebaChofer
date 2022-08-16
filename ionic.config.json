@@ -1,0 +1,7 @@
+{
+  "name": "PruebaChofer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
